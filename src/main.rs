@@ -4,7 +4,7 @@ extern crate gio;
 use gtk::prelude::*;
 use gio::prelude::*;
 
-use gtk::{ApplicationWindow, Builder, Box};
+use gtk::{ApplicationWindow, Builder, Box, Label};
 
 use std::env::args;
 
@@ -13,8 +13,11 @@ fn build_ui(application: &gtk::Application) {
     let builder = Builder::new_from_string(glade_src);
     let window: ApplicationWindow = builder.get_object("window").expect("Couldn't get widnow");
     window.set_application(Some(application));
+
+    let label: Label = builder.get_object("label1").expect("Couldn't get label");
     let menu: Box = builder.get_object("list").expect("Couldn't get box");
     // list
+    //menu.remove(&label);
     window.show_all();
 }
 
